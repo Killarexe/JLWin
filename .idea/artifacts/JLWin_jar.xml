@@ -1,0 +1,9 @@
+<component name="ArtifactManager">
+  <artifact type="jar" name="JLWin:jar">
+    <output-path>$PROJECT_DIR$/out/artifacts/JLWin_jar</output-path>
+    <root id="archive" name="JLWin.jar">
+      <element id="module-output" name="JLWin" />
+      <element id="extracted-dir" path="$PROJECT_DIR$/libs/java-discord-rpc-2.0.1-all.jar" path-in-jar="/" />
+    </root>
+  </artifact>
+</component>
