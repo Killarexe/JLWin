@@ -6,7 +6,6 @@ import net.killarexe.jlwin.comp.TextPane;
 import net.killarexe.jlwin.util.Logger;
 
 import javax.swing.*;
-import javax.xml.soap.Text;
 import java.io.*;
 import java.util.Formatter;
 import java.util.Scanner;

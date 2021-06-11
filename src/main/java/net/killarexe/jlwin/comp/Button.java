@@ -21,6 +21,12 @@ public class Button extends LComponent{
         button.setBounds(x, y, width, height);
     }
 
+    public Button(String name, int width, int height){
+        logger.debug("Creating Button: '" + name + "'");
+        button = new JButton(name);
+        button.setSize(width, height);
+    }
+
     public Button(int width, int height, String name, Panel panel, BorderLayout layout){
         logger.debug("Creating Button: '" + name + "'");
         button = new JButton(name);

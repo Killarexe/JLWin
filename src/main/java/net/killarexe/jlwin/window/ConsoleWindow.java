@@ -16,7 +16,7 @@ public class ConsoleWindow {
         logger.info("Creating ConsoleWindow");
         window = new Window(name, width,height);
         textPane = new TextPane(width, height, false);
-        pane = new ScrollPane(width, height, textPane, true, true);
+        pane = new ScrollPane(width, height, textPane.getTextPane(), true, true);
         window.getWindow().setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
         window.addComponent(pane.getScrollPane());
     }

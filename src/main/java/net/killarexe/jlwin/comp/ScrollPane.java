@@ -37,53 +37,13 @@ public class ScrollPane extends LComponent{
      * Create a JScrollPane
      * @param width: width of the JScrollPane
      * @param height: height of the JScrollPane
-     * @param textArea: if the JScrollPane Conatains a JTextArea
+     * @param component: if the JScrollPane Conatains a JTextField
      * @param hasVerScrollBar: if the JScrollPane have a Vertical Scroll Bar
      * @param hasHorScrollBar: if the JScrollPane have a Horizontal Scroll Bar
      */
-    public ScrollPane(int width, int height, TextArea textArea, boolean hasVerScrollBar, boolean hasHorScrollBar){
+    public ScrollPane(int width, int height, Component component, boolean hasVerScrollBar, boolean hasHorScrollBar){
         logger.debug("Creating ScrollPane");
-        scrollPane = new JScrollPane(textArea.getTextArea());
-        scrollPane.setPreferredSize(new Dimension(width, height));
-        if(hasHorScrollBar) {
-            scrollPane.createHorizontalScrollBar();
-        }
-        if(hasVerScrollBar){
-            scrollPane.createVerticalScrollBar();
-        }
-    }
-
-    /**
-     * Create a JScrollPane
-     * @param width: width of the JScrollPane
-     * @param height: height of the JScrollPane
-     * @param textPane: if the JScrollPane Conatains a JTextPane
-     * @param hasVerScrollBar: if the JScrollPane have a Vertical Scroll Bar
-     * @param hasHorScrollBar: if the JScrollPane have a Horizontal Scroll Bar
-     */
-    public ScrollPane(int width, int height, TextPane textPane, boolean hasVerScrollBar, boolean hasHorScrollBar){
-        logger.debug("Creating ScrollPane");
-        scrollPane = new JScrollPane(textPane.getTextPane());
-        scrollPane.setPreferredSize(new Dimension(width, height));
-        if(hasHorScrollBar) {
-            scrollPane.createHorizontalScrollBar();
-        }
-        if(hasVerScrollBar){
-            scrollPane.createVerticalScrollBar();
-        }
-    }
-
-    /**
-     * Create a JScrollPane
-     * @param width: width of the JScrollPane
-     * @param height: height of the JScrollPane
-     * @param textField: if the JScrollPane Conatains a JTextField
-     * @param hasVerScrollBar: if the JScrollPane have a Vertical Scroll Bar
-     * @param hasHorScrollBar: if the JScrollPane have a Horizontal Scroll Bar
-     */
-    public ScrollPane(int width, int height, TextField textField, boolean hasVerScrollBar, boolean hasHorScrollBar){
-        logger.debug("Creating ScrollPane");
-        scrollPane = new JScrollPane(textField.getTextField());
+        scrollPane = new JScrollPane(component);
         scrollPane.setPreferredSize(new Dimension(width, height));
         if(hasHorScrollBar) {
             scrollPane.createHorizontalScrollBar();
@@ -117,55 +77,13 @@ public class ScrollPane extends LComponent{
      * Create a JScrollPane
      * @param width: width of the JScrollPane
      * @param height: height of the JScrollPane
-     * @param textArea: if the JScrollPane Conatains a JTextArea
+     * @param component: if the JScrollPane Conatains a JTextArea
      * @param hasVerScrollBar: if the JScrollPane have a Vertical Scroll Bar
      * @param hasHorScrollBar: if the JScrollPane have a Horizontal Scroll Bar
      */
-    public ScrollPane(int width, int height, TextArea textArea, Panel panel, String layout, boolean hasVerScrollBar, boolean hasHorScrollBar){
+    public ScrollPane(int width, int height, Component component, Panel panel, String layout, boolean hasVerScrollBar, boolean hasHorScrollBar){
         logger.debug("Creating ScrollPane");
-        scrollPane = new JScrollPane(textArea.getTextArea());
-        scrollPane.setPreferredSize(new Dimension(width, height));
-        panel.getPanel().add(scrollPane, layout);
-        if(hasHorScrollBar) {
-            scrollPane.createHorizontalScrollBar();
-        }
-        if(hasVerScrollBar){
-            scrollPane.createVerticalScrollBar();
-        }
-    }
-
-    /**
-     * Create a JScrollPane
-     * @param width: width of the JScrollPane
-     * @param height: height of the JScrollPane
-     * @param textPane: if the JScrollPane Conatains a JTextPane
-     * @param hasVerScrollBar: if the JScrollPane have a Vertical Scroll Bar
-     * @param hasHorScrollBar: if the JScrollPane have a Horizontal Scroll Bar
-     */
-    public ScrollPane(int width, int height, TextPane textPane, Panel panel, String layout, boolean hasVerScrollBar, boolean hasHorScrollBar){
-        logger.debug("Creating ScrollPane");
-        scrollPane = new JScrollPane(textPane.getTextPane());
-        scrollPane.setPreferredSize(new Dimension(width, height));
-        panel.getPanel().add(scrollPane, layout);
-        if(hasHorScrollBar) {
-            scrollPane.createHorizontalScrollBar();
-        }
-        if(hasVerScrollBar){
-            scrollPane.createVerticalScrollBar();
-        }
-    }
-
-    /**
-     * Create a JScrollPane
-     * @param width: width of the JScrollPane
-     * @param height: height of the JScrollPane
-     * @param textField: if the JScrollPane Conatains a JTextField
-     * @param hasVerScrollBar: if the JScrollPane have a Vertical Scroll Bar
-     * @param hasHorScrollBar: if the JScrollPane have a Horizontal Scroll Bar
-     */
-    public ScrollPane(int width, int height, TextField textField, Panel panel, String layout, boolean hasVerScrollBar, boolean hasHorScrollBar){
-        logger.debug("Creating ScrollPane");
-        scrollPane = new JScrollPane(textField.getTextField());
+        scrollPane = new JScrollPane(component);
         scrollPane.setPreferredSize(new Dimension(width, height));
         panel.getPanel().add(scrollPane, layout);
         if(hasHorScrollBar) {
