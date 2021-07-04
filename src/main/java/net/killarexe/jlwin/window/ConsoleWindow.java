@@ -1,37 +1,40 @@
 package net.killarexe.jlwin.window;
 
-import net.killarexe.jlwin.comp.*;
+import net.killarexe.jlwin.javax.component.JXTextPane;
+import net.killarexe.jlwin.javax.component.JXWindow;
+import net.killarexe.jlwin.javax.component.JXScrollPane;
+import net.killarexe.jlwin.javax.enums.ScrollBar;
 import net.killarexe.jlwin.util.Logger;
 
 import javax.swing.*;
 
 public class ConsoleWindow {
 
-    private final Window window;
-    private final TextPane textPane;
-    private final ScrollPane pane;
+    private final JXWindow JXWindow;
+    private final JXTextPane JXTextPane;
+    private final JXScrollPane pane;
     private final Logger logger = new Logger(getClass());
 
     public ConsoleWindow(String name, int width, int height){
         logger.info("Creating ConsoleWindow");
-        window = new Window(name, width,height);
-        textPane = new TextPane(width, height, false);
-        pane = new ScrollPane(width, height, textPane.getTextPane(), true, true);
-        window.getWindow().setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
-        window.addComponent(pane.getScrollPane());
+        JXWindow = new JXWindow(name, width,height);
+        JXTextPane = new JXTextPane(width, height, false);
+        pane = new JXScrollPane(width, height, JXTextPane.getTextPane(), ScrollBar.BOTH);
+        JXWindow.getWindow().setDefaultCloseOperation(JFrame.DISPOSE_ON_CLOSE);
+        JXWindow.addComponent(pane.getScrollPane());
     }
 
-    public Window getWindow() {
-        return window;
+    public JXWindow getWindow() {
+        return JXWindow;
     }
 
-    public JFrame getJFrame(){return window.getWindow();}
+    public JFrame getJFrame(){return JXWindow.getWindow();}
 
-    public TextPane getTextPane() {
-        return textPane;
+    public JXTextPane getTextPane() {
+        return JXTextPane;
     }
 
-    public ScrollPane getPane() {
+    public JXScrollPane getPane() {
         return pane;
     }
 }

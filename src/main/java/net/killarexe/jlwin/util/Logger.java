@@ -1,8 +1,8 @@
 package net.killarexe.jlwin.util;
 
-import net.killarexe.jlwin.comp.TextArea;
-import net.killarexe.jlwin.comp.TextField;
-import net.killarexe.jlwin.comp.TextPane;
+import net.killarexe.jlwin.javax.component.JXTextArea;
+import net.killarexe.jlwin.javax.component.JXTextField;
+import net.killarexe.jlwin.javax.component.JXTextPane;
 
 /**
  * Date 13/05/21
@@ -12,9 +12,9 @@ import net.killarexe.jlwin.comp.TextPane;
 public class Logger {
 
     private final String name;
-    private static TextArea textArea;
-    private static TextPane textPane;
-    private static TextField textField;
+    private static JXTextArea JXTextArea;
+    private static JXTextPane JXTextPane;
+    private static JXTextField JXTextField;
 
     /**
      * Create logger
@@ -64,30 +64,30 @@ public class Logger {
         errLog("[FATAL]", msg);
     }
 
-    public void sendTextArea(TextArea area){
-        textArea = area;
+    public void sendTextArea(JXTextArea area){
+        JXTextArea = area;
     }
 
-    public void sendTextField(TextField field){
-        textField = field;
+    public void sendTextField(JXTextField field){
+        JXTextField = field;
     }
 
-    public void sendTextPane(TextPane pane){
-        textPane = pane;
+    public void sendTextPane(JXTextPane pane){
+        JXTextPane = pane;
     }
 
     private void log(String logMessageStr, Object msg){
         String completeMsg = logMessageStr + "(" + name + "): " + msg;
         System.out.println(completeMsg);
 
-        if(textArea != null){
-            textArea.getTextArea().append(completeMsg);
-        }else if(textField != null){
-            String textFieldStr = textField.getText();
-            textField.getTextField().setText(textFieldStr + "\n" + completeMsg);
-        }else if(textPane != null){
-            String textPaneStr = textPane.getText();
-            textPane.getTextPane().setText(textPaneStr + "\n" + completeMsg);
+        if(JXTextArea != null){
+            JXTextArea.getTextArea().append(completeMsg);
+        }else if(JXTextField != null){
+            String textFieldStr = JXTextField.getText();
+            JXTextField.getTextField().setText(textFieldStr + "\n" + completeMsg);
+        }else if(JXTextPane != null){
+            String textPaneStr = JXTextPane.getText();
+            JXTextPane.getTextPane().setText(textPaneStr + "\n" + completeMsg);
         }
     }
 

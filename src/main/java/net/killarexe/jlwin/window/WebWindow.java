@@ -1,11 +1,7 @@
 package net.killarexe.jlwin.window;
 
-import net.killarexe.jlwin.comp.*;
-import net.killarexe.jlwin.comp.Button;
-import net.killarexe.jlwin.comp.Panel;
-import net.killarexe.jlwin.comp.ScrollPane;
-import net.killarexe.jlwin.comp.TextField;
-import net.killarexe.jlwin.comp.Window;
+import net.killarexe.jlwin.javax.component.*;
+import net.killarexe.jlwin.javax.enums.ScrollBar;
 
 import javax.swing.*;
 import javax.swing.event.*;
@@ -13,32 +9,31 @@ import javax.swing.text.html.HTMLDocument;
 import javax.swing.text.html.HTMLFrameHyperlinkEvent;
 import java.awt.*;
 import java.awt.event.*;
-import java.io.IOException;
 
 public class WebWindow implements ActionListener, HyperlinkListener {
 
-    private Window window;
-    private Panel panel;
-    private TextField field;
-    private EditorPane pane;
-    private ScrollPane scrollPane;
-    private Button button;
+    private JXWindow JXWindow;
+    private JXPanel JXPanel;
+    private JXTextField field;
+    private JXEditorPane pane;
+    private JXScrollPane JXScrollPane;
+    private JXButton JXButton;
 
     public WebWindow(String name, int width, int height, String defaultURL){
-        window = new Window(name, width, height);
-        window.getWindow().setResizable(true);
-        panel = new Panel(width, height);
-        pane = new EditorPane(width, height-60, false);
-        field = new TextField(width, 50, true);
-        button = new Button("Go!", 100, 20);
-        scrollPane = new ScrollPane(width, height-100, pane.getPane(), true, true);
-        button.addListener(this);
+        JXWindow = new JXWindow(name, width, height);
+        JXWindow.getWindow().setResizable(true);
+        JXPanel = new JXPanel(width, height);
+        pane = new JXEditorPane(width, height-60, false);
+        field = new JXTextField(width, 50, true);
+        JXButton = new JXButton("Go!", 100, 20);
+        JXScrollPane = new JXScrollPane(width, height-100, pane.getPane(), ScrollBar.BOTH);
+        JXButton.addListener(this);
         field.addListener(this);
         pane.addHyperlinkListener(this);
-        panel.getPanel().add(scrollPane.getScrollPane(), BorderLayout.CENTER);
-        panel.getPanel().add(field.getTextField(), BorderLayout.NORTH);
-        panel.getPanel().add(button.getButton(), BorderLayout.EAST);
-        window.addComponent(panel.getPanel());
+        JXPanel.getPanel().add(JXScrollPane.getScrollPane(), BorderLayout.CENTER);
+        JXPanel.getPanel().add(field.getTextField(), BorderLayout.NORTH);
+        JXPanel.getPanel().add(JXButton.getButton(), BorderLayout.EAST);
+        JXWindow.addComponent(JXPanel.getPanel());
         pane.setURL(defaultURL);
     }
 

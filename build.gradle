@@ -3,8 +3,51 @@ plugins {
     id 'io.spring.dependency-management' version '1.0.1.RELEASE'
 }
 
+sourceSets {
+
+}
+task sources(type: Copy) {
+    from 'src/main/java'
+    into "$buildDir/sources"
+}
+
+java{
+    sourceCompatibility = JavaVersion.VERSION_16
+    targetCompatibility = JavaVersion.VERSION_16
+}
+
 group 'net.killarexe'
 version '0.1a'
+
+tasks.withType(JavaCompile) {
+    options.incremental = true
+    options.encoding = 'UTF-8'
+}
+
+jar{
+    baseName = project.name
+    manifest {
+        attributes 'Implementation-Version': version
+        attributes 'Target-Platforms': 'win32-x86-64, win32-x86, linux-x86-64, darwin'
+    }
+    dependsOn sources
+}
+
+javadoc {
+    failOnError = false
+    options.author()
+    options.encoding = 'UTF-8'
+    if (JavaVersion.current().java9Compatible)
+        options.addBooleanOption('html5', true)
+    options.links("https://killarexe.github.io/JLWin/", "https://docs.oracle.com/javase/8/docs/api/")
+
+    dependsOn sources
+    source = sources.destinationDir
+}
+
+project.ext.lwjglVersion = "3.2.3"
+project.ext.jomlVersion = "1.10.1"
+project.ext.lwjglNatives = "natives-windows"
 
 repositories {
     jcenter()
@@ -12,6 +55,52 @@ repositories {
 }
 
 dependencies {
-    implementation 'com.google.api-client:google-api-client:1.31.2'
+
+    //Discord RPC
     implementation 'club.minnced:java-discord-rpc:2.0.1'
+
+    //Gson
+    implementation 'com.google.code.gson:gson:2.8.6'
+
+    //LWJGL
+    implementation platform("org.lwjgl:lwjgl-bom:$lwjglVersion")
+    implementation "org.lwjgl:lwjgl"
+    implementation "org.lwjgl:lwjgl-assimp"
+    implementation "org.lwjgl:lwjgl-glfw"
+    implementation "org.lwjgl:lwjgl-nfd"
+    implementation "org.lwjgl:lwjgl-openal"
+    implementation "org.lwjgl:lwjgl-opengl"
+    implementation "org.lwjgl:lwjgl-stb"
+    runtimeOnly "org.lwjgl:lwjgl::$lwjglNatives"
+    runtimeOnly "org.lwjgl:lwjgl-assimp::$lwjglNatives"
+    runtimeOnly "org.lwjgl:lwjgl-glfw::$lwjglNatives"
+    runtimeOnly "org.lwjgl:lwjgl-nfd::$lwjglNatives"
+    runtimeOnly "org.lwjgl:lwjgl-openal::$lwjglNatives"
+    runtimeOnly "org.lwjgl:lwjgl-opengl::$lwjglNatives"
+    runtimeOnly "org.lwjgl:lwjgl-stb::$lwjglNatives"
+    implementation "org.joml:joml:${jomlVersion}"
+}
+
+task sourcesJar(type: Jar, dependsOn: classes) {
+    classifier = 'sources'
+    from "$buildDir/sources"
+}
+
+task javadocJar(type: Jar, dependsOn: javadoc) {
+    classifier = 'javadoc'
+    from javadoc.destinationDir
+}
+
+def getProjectProperty(String key) {
+    return hasProperty(key) ? this.properties[key] : ''
+}
+
+build {
+    dependsOn jar
+    dependsOn javadocJar
+    dependsOn sourcesJar
+
+    jar.mustRunAfter clean
+    javadocJar.mustRunAfter jar
+    sourcesJar.mustRunAfter javadocJar
 }

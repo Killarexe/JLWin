@@ -1,6 +1,6 @@
 package net.killarexe.jlwin.util.text;
 
-import net.killarexe.jlwin.comp.TextPane;
+import net.killarexe.jlwin.javax.component.JXTextPane;
 
 import javax.swing.*;
 import javax.swing.text.*;
@@ -15,10 +15,10 @@ public class JavaDocumentFilter extends DocumentFilter{
     private final AttributeSet redAttributeSet;
     private final AttributeSet blueAttributeSet;
     private final AttributeSet blackAttributeSet;
-    private final TextPane pane;
+    private final JXTextPane pane;
     private final Pattern redPattern = buildRedPattern();
 
-    public JavaDocumentFilter(TextPane pane){
+    public JavaDocumentFilter(JXTextPane pane){
         this.pane = pane;
         styledDocument = pane.getTextPane().getStyledDocument();
         styleContext = StyleContext.getDefaultStyleContext();
@@ -68,9 +68,9 @@ public class JavaDocumentFilter extends DocumentFilter{
             sb.deleteCharAt(sb.length() - 1); // Remove the trailing "|"
         }
 
-        Pattern p = Pattern.compile(sb.toString());
+        Pattern pattern = Pattern.compile(sb.toString());
 
-        return p;
+        return pattern;
     }
 
 

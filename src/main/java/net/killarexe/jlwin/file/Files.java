@@ -1,8 +1,8 @@
 package net.killarexe.jlwin.file;
 
-import net.killarexe.jlwin.comp.TextArea;
-import net.killarexe.jlwin.comp.TextField;
-import net.killarexe.jlwin.comp.TextPane;
+import net.killarexe.jlwin.javax.component.JXTextArea;
+import net.killarexe.jlwin.javax.component.JXTextField;
+import net.killarexe.jlwin.javax.component.JXTextPane;
 import net.killarexe.jlwin.util.Logger;
 
 import javax.swing.*;
@@ -76,7 +76,7 @@ public class Files {
      * Create a file from a JTextArea
      * @param area: TextArea
      */
-    public void create(TextArea area){
+    public void create(JXTextArea area){
         JFileChooser fileChooser = new JFileChooser();
         fileChooser.setCurrentDirectory(new java.io.File("."));
 
@@ -105,7 +105,7 @@ public class Files {
      * Create a file from a JTextField
      * @param field: TextField
      */
-    public void create(TextField field){
+    public void create(JXTextField field){
         JFileChooser fileChooser = new JFileChooser();
         fileChooser.setCurrentDirectory(new java.io.File("."));
 
@@ -134,7 +134,7 @@ public class Files {
      * Create a file from a JTextPane
      * @param pane: TextPane
      */
-    public void create(TextPane pane){
+    public void create(JXTextPane pane){
         JFileChooser fileChooser = new JFileChooser();
         fileChooser.setCurrentDirectory(new java.io.File("."));
 
@@ -164,7 +164,7 @@ public class Files {
      * @param path: path
      * @param area: area
      */
-    public void create(String path, TextArea area){
+    public void create(String path, JXTextArea area){
         PrintWriter fileOut = null;
 
         file = new java.io.File(path);
@@ -187,7 +187,7 @@ public class Files {
      * @param path: path
      * @param field: field
      */
-    public void create(String path, TextField field){
+    public void create(String path, JXTextField field){
         PrintWriter fileOut = null;
 
         file = new java.io.File(path);
@@ -210,7 +210,7 @@ public class Files {
      * @param path: path
      * @param pane: pane
      */
-    public void create(String path, TextPane pane){
+    public void create(String path, JXTextPane pane){
         PrintWriter fileOut = null;
 
         file = new java.io.File(path);
@@ -287,7 +287,7 @@ public class Files {
      * Save a file from a JTextArea
      * @param area: TextArea
      */
-    public void save(TextArea area){
+    public void save(JXTextArea area){
         try {
 
             if(file == null) {
@@ -309,7 +309,7 @@ public class Files {
      * Save a file from a JTextPane
      * @param pane: TextPane
      */
-    public void save(TextPane pane){
+    public void save(JXTextPane pane){
         try {
 
             if(file == null) {
@@ -331,7 +331,7 @@ public class Files {
      * Save a file from a JTextField
      * @param field: TextField
      */
-    public void save(TextField field){
+    public void save(JXTextField field){
         try {
 
             if(file == null) {
@@ -353,7 +353,7 @@ public class Files {
      * Open a file to JTextArea
      * @param area: TextArea
      */
-    public void open(TextArea area){
+    public void open(JXTextArea area){
         JFileChooser fileChooser = new JFileChooser();
         fileChooser.setCurrentDirectory(new java.io.File("."));
         int response = fileChooser.showOpenDialog(null);
@@ -387,7 +387,7 @@ public class Files {
      * Open a file to JTextPane
      * @param pane: TextPane
      */
-    public void open(TextPane pane){
+    public void open(JXTextPane pane){
         JFileChooser fileChooser = new JFileChooser();
         fileChooser.setCurrentDirectory(new java.io.File("."));
         int response = fileChooser.showOpenDialog(null);
@@ -421,7 +421,7 @@ public class Files {
      * Open a file to JTextField
      * @param field: TextField
      */
-    public void open(TextField field){
+    public void open(JXTextField field){
         JFileChooser fileChooser = new JFileChooser();
         fileChooser.setCurrentDirectory(new java.io.File("."));
         int response = fileChooser.showOpenDialog(null);
@@ -457,7 +457,7 @@ public class Files {
      * @param path: path
      * @param area: TextArea
      */
-    public void open(String path, TextArea area){
+    public void open(String path, JXTextArea area){
             if(!(file == null)) {
                 return;
             }else {
@@ -487,7 +487,7 @@ public class Files {
      * @param path: path
      * @param field: TextField
      */
-    public void open(String path, TextField field){
+    public void open(String path, JXTextField field){
         if(!(file == null)) {
             return;
         }else {
@@ -517,7 +517,7 @@ public class Files {
      * @param path: path
      * @param pane: TextPane
      */
-    public void open(String path, TextPane pane){
+    public void open(String path, JXTextPane pane){
         if(!(file == null)) {
             return;
         }else {
@@ -546,7 +546,7 @@ public class Files {
      * Close a file from a JTextArea
      * @param area: TextArea
      */
-    public void close(TextArea area){
+    public void close(JXTextArea area){
         if(file == null) {
             JOptionPane.showMessageDialog(null, "Falied to close file! No File Is Selected!");
             logger.error("Falied to close file! No File Is Selected!");
@@ -561,7 +561,7 @@ public class Files {
      * Close a file from a JTextPane
      * @param pane: TextPane
      */
-    public void close(TextPane pane){
+    public void close(JXTextPane pane){
         if(file == null) {
             JOptionPane.showMessageDialog(null, "Falied to close file! No File Is Selected!");
             logger.error("Falied to close file! No File Is Selected!");
@@ -576,7 +576,7 @@ public class Files {
      * Close a file from a JTextField
      * @param field: TextField
      */
-    public void close(TextField field){
+    public void close(JXTextField field){
         if(file == null) {
             JOptionPane.showMessageDialog(null, "Falied to close file! No File Is Selected!");
             logger.error("Falied to close file! No File Is Selected!");
@@ -604,7 +604,7 @@ public class Files {
 
     /**
      * Get File from File
-     * @return
+     * @return : return a File
      */
     public java.io.File getFile() {
         return file;

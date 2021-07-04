@@ -1,8 +1,0 @@
-<component name="ArtifactManager">
-  <artifact type="jar" name="JLWin:jar">
-    <output-path>$PROJECT_DIR$/out/artifacts/JLWin_jar</output-path>
-    <root id="archive" name="JLWin.jar">
-      <element id="module-output" name="JLWin" />
-    </root>
-  </artifact>
-</component>

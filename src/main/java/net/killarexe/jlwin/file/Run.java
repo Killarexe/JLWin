@@ -1,8 +1,8 @@
 package net.killarexe.jlwin.file;
 
-import net.killarexe.jlwin.comp.TextArea;
-import net.killarexe.jlwin.comp.TextField;
-import net.killarexe.jlwin.comp.TextPane;
+import net.killarexe.jlwin.javax.component.JXTextArea;
+import net.killarexe.jlwin.javax.component.JXTextField;
+import net.killarexe.jlwin.javax.component.JXTextPane;
 
 import javax.swing.*;
 import java.io.IOException;
@@ -18,7 +18,7 @@ public class Run {
 
     /**
      * Make compile and run files
-     * @param build
+     * @param build: Build class
      */
     public Run(Build build){
         this.build = build;
@@ -29,7 +29,7 @@ public class Run {
      * @param files: File
      * @param area: TextArea
      */
-    public void checkAndRun(Files files, TextArea area){
+    public void checkAndRun(Files files, JXTextArea area){
         files.save(area);
         if(files.getFile().getName().endsWith(".java")) {
             runJava(files);
@@ -40,7 +40,7 @@ public class Run {
         }else if(files.getFile().getName().endsWith(".c")){
             runC(files);
         }else if(files.getFile().getName().endsWith(".cs")){
-            runCSharp(files);
+            runAndBuildCSharp(files);
         }else if(files.getFile().getName().endsWith(".cpp")){
             runCpp(files);
         }else if(files.getFile().getName().endsWith(".js")){
@@ -55,7 +55,7 @@ public class Run {
      * @param files: file
      * @param area: TextArea
      */
-    public void checkBuildAndRun(Files files, TextArea area){
+    public void checkBuildAndRun(Files files, JXTextArea area){
         files.save(area);
         if(files.getFile().getName().endsWith(".java")) {
             runAndBuildJava(files);
@@ -81,7 +81,7 @@ public class Run {
      * @param files: file
      * @param field: TextField
      */
-    public void checkBuildAndRun(Files files, TextField field){
+    public void checkBuildAndRun(Files files, JXTextField field){
         files.save(field);
         if(files.getFile().getName().endsWith(".java")) {
             runAndBuildJava(files);
@@ -107,7 +107,7 @@ public class Run {
      * @param files: file
      * @param pane: TextPane
      */
-    public void checkBuildAndRun(Files files, TextPane pane){
+    public void checkBuildAndRun(Files files, JXTextPane pane){
         files.save(pane);
         if(files.getFile().getName().endsWith(".java")) {
             runAndBuildJava(files);
@@ -155,8 +155,8 @@ public class Run {
                 Runtime rt = Runtime.getRuntime();
                 build.buildJava();
                 Thread.sleep(10000);
-                rt.exec("cmd /c start cmd.exe /K \"cd " + files.getFile().getParentFile() + " && java " + files.getFile().getName().replaceFirst("[.][^.]+$", "") + "\"");
-            } catch (IOException | InterruptedException e1) {
+                runJava(files);
+            } catch (InterruptedException e1) {
                 e1.printStackTrace();
             }
         }else {
@@ -177,7 +177,7 @@ public class Run {
                 e1.printStackTrace();
             }
         }else {
-            JOptionPane.showMessageDialog(null, "Falied to run file! No Python Is Selected! Or Python is an old version!");
+            JOptionPane.showMessageDialog(null, "Falied to run file! No Python File Is Selected! Or Python is an old version!");
         }
     }
 
@@ -194,7 +194,7 @@ public class Run {
                 e1.printStackTrace();
             }
         }else {
-            JOptionPane.showMessageDialog(null, "Falied to run file! No Python Is Selected! Or Python is an old version!");
+            JOptionPane.showMessageDialog(null, "Falied to run file! No HTML File Is Selected!");
         }
     }
 
@@ -204,11 +204,11 @@ public class Run {
      */
     public void runC(Files files){
         if(files.getFile().getName().endsWith(".c")){
-            try {
-                Runtime rt =  Runtime.getRuntime();
-                rt.exec("cmd /c start cmd.exe \"gcc -v && gcc " + files.getFile().getName());
-            } catch (IOException e1) {
-                e1.printStackTrace();
+            try{
+                Runtime rt = Runtime.getRuntime();
+                rt.exec("cmd /c start cmd.exe /K \"start " + files.getFile().getPath() + ".exe" + "\"");
+            }catch (IOException e){
+                e.printStackTrace();
             }
         }
     }
@@ -219,54 +219,36 @@ public class Run {
      */
     public void runAndBuildC(Files files){
         if(files.getFile().getName().endsWith(".c")){
-            try {
-                Runtime rt =  Runtime.getRuntime();
-                rt.exec("cmd /c start cmd.exe \"gcc -v && gcc " + files.getFile().getName());
-            } catch (IOException e1) {
-                e1.printStackTrace();
-            }
-        }
-    }
-
-    /**
-     * Run .cs file
-     * @param files: file
-     */
-    public void runCSharp(Files files){
-        if(files.getFile().getName().endsWith(".cs")){
-            try {
-                Runtime rt =  Runtime.getRuntime();
-                rt.exec("cmd /c start cmd.exe \"csc " + files.getFile().getName() + " && " + files.getFile().getName().replaceFirst("[.][^.]+$", ".exe") + "\"");
-            } catch (IOException e1) {
-                e1.printStackTrace();
-            }
+            build.buildC();
+            runC(files);
         }
     }
 
     /**
      * Run and Compile .cs file
-     * @param files
+     * @param files: Files class
      */
     public void runAndBuildCSharp(Files files){
         if(files.getFile().getName().endsWith(".cs")){
-            try {
-                Runtime rt =  Runtime.getRuntime();
-                rt.exec("cmd /c start cmd.exe \"csc " + files.getFile().getName() + " && " + files.getFile().getName().replaceFirst("[.][^.]+$", ".exe") + "\"");
-            } catch (IOException e1) {
-                e1.printStackTrace();
-            }
+            build.buildCsharp();
         }
     }
 
     public void runCpp(Files files){
         if(files.getFile().getName().endsWith("cpp")){
-
+            try{
+                Runtime rt = Runtime.getRuntime();
+                rt.exec("cmd /c start cmd.exe /K \"start " + files.getFile().getPath() + ".exe" + "\"");
+            }catch (IOException e){
+                e.printStackTrace();
+            }
         }
     }
 
     public void runAndBuildCpp(Files files){
         if(files.getFile().getName().endsWith("cpp")){
             build.buildCpp();
+            runCpp(files);
         }
     }
 

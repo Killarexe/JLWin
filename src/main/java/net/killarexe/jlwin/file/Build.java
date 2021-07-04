@@ -16,14 +16,19 @@ public class Build {
 
     /**
      * Compile files
-     * @param files
+     * @param files: Files class
      */
     public Build(Files files){
         this.files = files;
     }
 
     public void buildC(){
-
+        try{
+            Runtime rt = Runtime.getRuntime();
+            rt.exec("cmd /c start cmd.exe /K \"gcc " + files.getFile().getPath() + " " + files.getFile().getName() + "\"");
+        }catch (IOException e){
+            e.printStackTrace();
+        }
     }
 
     /**
@@ -32,14 +37,19 @@ public class Build {
     public void buildCpp(){
         try{
             Runtime rt = Runtime.getRuntime();
-            rt.exec("cmd /c start cmd.exe /K \"g++ " + files.getFile().getPath() + " " + files.getFile().getName() + "&& " + files.getFile().getName() + ".exe" + "\"");
+            rt.exec("cmd /c start cmd.exe /K \"g++ " + files.getFile().getPath() + " " + files.getFile().getName() + "\"");
         }catch (IOException e){
             e.printStackTrace();
         }
     }
 
     public void buildCsharp(){
-
+        try{
+            Runtime rt = Runtime.getRuntime();
+            rt.exec("cmd /c start cmd.exe /K \"csc " + files.getFile().getPath() + "\"");
+        }catch (IOException e){
+            e.printStackTrace();
+        }
     }
 
     /**
