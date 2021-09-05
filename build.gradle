@@ -17,7 +17,7 @@ java{
 }
 
 group 'net.killarexe'
-version '0.1a'
+version '0.2a'
 
 tasks.withType(JavaCompile) {
     options.incremental = true

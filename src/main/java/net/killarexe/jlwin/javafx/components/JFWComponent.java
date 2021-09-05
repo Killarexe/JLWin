@@ -1,4 +1,4 @@
-package net.killarexe.jlwin.javafx;
+package net.killarexe.jlwin.javafx.components;
 
 import net.killarexe.jlwin.util.Logger;
 

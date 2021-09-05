@@ -197,6 +197,7 @@ public class GLWindow extends GLComponent{
 
     public void setIcon(long icon) {
         this.icon = icon;
+        glfwSetWindowIcon(window, new GLFWImage.Buffer(icon, 0));
     }
 
     public String getTitle() {
@@ -205,6 +206,7 @@ public class GLWindow extends GLComponent{
 
     public void setTitle(String title) {
         this.title = title;
+        glfwSetWindowTitle(window, title);
     }
 
     public int getWidth() {
@@ -213,6 +215,7 @@ public class GLWindow extends GLComponent{
 
     public void setWidth(int width) {
         this.width = width;
+        glfwSetWindowSize(window, width, this.height);
     }
 
     public int getHeight() {
@@ -221,10 +224,12 @@ public class GLWindow extends GLComponent{
 
     public void setHeight(int height) {
         this.height = height;
+        glfwSetWindowSize(window, this.width, height);
     }
 
     public void setResizeable(boolean resizeable) {
         this.isResizeable = resizeable;
+        glfwWindowHint(GLFW_RESIZABLE, ifisResizeable());
     }
 
     public Vector4f getColor() {
