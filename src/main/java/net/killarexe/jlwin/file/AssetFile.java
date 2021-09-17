@@ -7,6 +7,12 @@ import net.killarexe.jlwin.util.Logger;
 
 import javax.swing.*;
 import java.io.*;
+import java.net.MalformedURLException;
+import java.net.URL;
+import java.nio.channels.Channels;
+import java.nio.channels.ReadableByteChannel;
+import java.nio.file.Files;
+import java.nio.file.Path;
 import java.util.Formatter;
 import java.util.Scanner;
 
@@ -15,10 +21,57 @@ import java.util.Scanner;
  * @author Killar.exe
  * @version 0.1a
  */
-public class Files {
+public class AssetFile {
 
     private File file;
     private final Logger logger = new Logger(getClass());
+
+    public AssetFile(File file){
+        this.file = file;
+    }
+
+    public AssetFile(String path){
+        this.file = new File(path);
+    }
+
+    public AssetFile(URL URL, String out){
+        //Code: https://stackoverflow.com/questions/921262/how-to-download-and-save-a-file-from-internet-using-java
+        URL website = URL;
+        try {
+            ReadableByteChannel rbc = Channels.newChannel(website.openStream());
+            FileOutputStream fos = new FileOutputStream(out);
+            fos.getChannel().transferFrom(rbc, 0, Long.MAX_VALUE);
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
+
+    public static boolean isSame(File file, File other){
+        boolean same = false;
+        try {
+            same = Files.mismatch(file.getAbsoluteFile().toPath(), other.getAbsoluteFile().toPath()) == -1;
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return same;
+    }
+
+    public static void updateFile(File file, String tmpNameOut, String url){
+        AssetFile downloadedFile = null;
+        try {
+             downloadedFile = new AssetFile(new URL(url), System.getProperty("java.io.tmpdir")+"\\"+tmpNameOut);
+        } catch (MalformedURLException e) {
+            e.printStackTrace();
+        }
+
+        if(isSame(file, downloadedFile.getFile())){
+            try {
+                Files.copy(downloadedFile.getFile().toPath(), file.toPath());
+            } catch (IOException e) {
+                e.printStackTrace();
+            }
+        }
+    }
 
     /**
      * Create a File from a String

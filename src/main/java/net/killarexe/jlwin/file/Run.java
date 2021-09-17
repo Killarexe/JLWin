@@ -26,25 +26,25 @@ public class Run {
 
     /**
      * Check and Run selected file
-     * @param files: File
+     * @param assetFile: File
      * @param area: TextArea
      */
-    public void checkAndRun(Files files, JXTextArea area){
-        files.save(area);
-        if(files.getFile().getName().endsWith(".java")) {
-            runJava(files);
-        }else if(files.getFile().getName().endsWith(".py")){
-            runPyhton(files);
-        }else if(files.getFile().getName().endsWith(".html")){
-            runHTML(files);
-        }else if(files.getFile().getName().endsWith(".c")){
-            runC(files);
-        }else if(files.getFile().getName().endsWith(".cs")){
-            runAndBuildCSharp(files);
-        }else if(files.getFile().getName().endsWith(".cpp")){
-            runCpp(files);
-        }else if(files.getFile().getName().endsWith(".js")){
-            runJavaScript(files);
+    public void checkAndRun(AssetFile assetFile, JXTextArea area){
+        assetFile.save(area);
+        if(assetFile.getFile().getName().endsWith(".java")) {
+            runJava(assetFile);
+        }else if(assetFile.getFile().getName().endsWith(".py")){
+            runPyhton(assetFile);
+        }else if(assetFile.getFile().getName().endsWith(".html")){
+            runHTML(assetFile);
+        }else if(assetFile.getFile().getName().endsWith(".c")){
+            runC(assetFile);
+        }else if(assetFile.getFile().getName().endsWith(".cs")){
+            runAndBuildCSharp(assetFile);
+        }else if(assetFile.getFile().getName().endsWith(".cpp")){
+            runCpp(assetFile);
+        }else if(assetFile.getFile().getName().endsWith(".js")){
+            runJavaScript(assetFile);
         }else{
             JOptionPane.showMessageDialog(null, "No File Selected!");
         }
@@ -52,25 +52,25 @@ public class Run {
 
     /**
      * Check, Compile and Run selected File
-     * @param files: file
+     * @param assetFile: file
      * @param area: TextArea
      */
-    public void checkBuildAndRun(Files files, JXTextArea area){
-        files.save(area);
-        if(files.getFile().getName().endsWith(".java")) {
-            runAndBuildJava(files);
-        }else if(files.getFile().getName().endsWith(".py")){
-            runPyhton(files);
-        }else if(files.getFile().getName().endsWith(".html")){
-            runHTML(files);
-        }else if(files.getFile().getName().endsWith(".c")){
-            runAndBuildC(files);
-        }else if(files.getFile().getName().endsWith(".cs")){
-            runAndBuildCSharp(files);
-        }else if(files.getFile().getName().endsWith(".cpp")){
-            runAndBuildCpp(files);
-        }else if(files.getFile().getName().endsWith(".js")){
-            runAndBuildJavaScript(files);
+    public void checkBuildAndRun(AssetFile assetFile, JXTextArea area){
+        assetFile.save(area);
+        if(assetFile.getFile().getName().endsWith(".java")) {
+            runAndBuildJava(assetFile);
+        }else if(assetFile.getFile().getName().endsWith(".py")){
+            runPyhton(assetFile);
+        }else if(assetFile.getFile().getName().endsWith(".html")){
+            runHTML(assetFile);
+        }else if(assetFile.getFile().getName().endsWith(".c")){
+            runAndBuildC(assetFile);
+        }else if(assetFile.getFile().getName().endsWith(".cs")){
+            runAndBuildCSharp(assetFile);
+        }else if(assetFile.getFile().getName().endsWith(".cpp")){
+            runAndBuildCpp(assetFile);
+        }else if(assetFile.getFile().getName().endsWith(".js")){
+            runAndBuildJavaScript(assetFile);
         }else{
             JOptionPane.showMessageDialog(null, "No File Selected!");
         }
@@ -78,25 +78,25 @@ public class Run {
 
     /**
      * Check, Compile and Run selected File
-     * @param files: file
+     * @param assetFile: file
      * @param field: TextField
      */
-    public void checkBuildAndRun(Files files, JXTextField field){
-        files.save(field);
-        if(files.getFile().getName().endsWith(".java")) {
-            runAndBuildJava(files);
-        }else if(files.getFile().getName().endsWith(".py")){
-            runPyhton(files);
-        }else if(files.getFile().getName().endsWith(".html")){
-            runHTML(files);
-        }else if(files.getFile().getName().endsWith(".c")){
-            runAndBuildC(files);
-        }else if(files.getFile().getName().endsWith(".cs")){
-            runAndBuildCSharp(files);
-        }else if(files.getFile().getName().endsWith(".cpp")){
-            runAndBuildCpp(files);
-        }else if(files.getFile().getName().endsWith(".js")){
-            runAndBuildJavaScript(files);
+    public void checkBuildAndRun(AssetFile assetFile, JXTextField field){
+        assetFile.save(field);
+        if(assetFile.getFile().getName().endsWith(".java")) {
+            runAndBuildJava(assetFile);
+        }else if(assetFile.getFile().getName().endsWith(".py")){
+            runPyhton(assetFile);
+        }else if(assetFile.getFile().getName().endsWith(".html")){
+            runHTML(assetFile);
+        }else if(assetFile.getFile().getName().endsWith(".c")){
+            runAndBuildC(assetFile);
+        }else if(assetFile.getFile().getName().endsWith(".cs")){
+            runAndBuildCSharp(assetFile);
+        }else if(assetFile.getFile().getName().endsWith(".cpp")){
+            runAndBuildCpp(assetFile);
+        }else if(assetFile.getFile().getName().endsWith(".js")){
+            runAndBuildJavaScript(assetFile);
         }else{
             JOptionPane.showMessageDialog(null, "No File Selected!");
         }
@@ -104,25 +104,25 @@ public class Run {
 
     /**
      * Check, Compile and Run selected File
-     * @param files: file
+     * @param assetFile: file
      * @param pane: TextPane
      */
-    public void checkBuildAndRun(Files files, JXTextPane pane){
-        files.save(pane);
-        if(files.getFile().getName().endsWith(".java")) {
-            runAndBuildJava(files);
-        }else if(files.getFile().getName().endsWith(".py")){
-            runPyhton(files);
-        }else if(files.getFile().getName().endsWith(".html")){
-            runHTML(files);
-        }else if(files.getFile().getName().endsWith(".c")){
-            runAndBuildC(files);
-        }else if(files.getFile().getName().endsWith(".cs")){
-            runAndBuildCSharp(files);
-        }else if(files.getFile().getName().endsWith(".cpp")){
-            runAndBuildCpp(files);
-        }else if(files.getFile().getName().endsWith(".js")){
-            runAndBuildJavaScript(files);
+    public void checkBuildAndRun(AssetFile assetFile, JXTextPane pane){
+        assetFile.save(pane);
+        if(assetFile.getFile().getName().endsWith(".java")) {
+            runAndBuildJava(assetFile);
+        }else if(assetFile.getFile().getName().endsWith(".py")){
+            runPyhton(assetFile);
+        }else if(assetFile.getFile().getName().endsWith(".html")){
+            runHTML(assetFile);
+        }else if(assetFile.getFile().getName().endsWith(".c")){
+            runAndBuildC(assetFile);
+        }else if(assetFile.getFile().getName().endsWith(".cs")){
+            runAndBuildCSharp(assetFile);
+        }else if(assetFile.getFile().getName().endsWith(".cpp")){
+            runAndBuildCpp(assetFile);
+        }else if(assetFile.getFile().getName().endsWith(".js")){
+            runAndBuildJavaScript(assetFile);
         }else{
             JOptionPane.showMessageDialog(null, "No File Selected!");
         }
@@ -130,13 +130,13 @@ public class Run {
 
     /**
      * Run .class/Java file;
-     * @param files: file
+     * @param assetFile: file
      */
-    public void runJava(Files files){
-        if(files.getFile().getName().endsWith(".java")) {
+    public void runJava(AssetFile assetFile){
+        if(assetFile.getFile().getName().endsWith(".java")) {
             try {
                 Runtime rt = Runtime.getRuntime();
-                rt.exec("cmd /c start cmd.exe /K \"cd " + files.getFile().getParentFile() + " && java " + files.getFile().getName().replaceFirst("[.][^.]+$", "") + "\"");
+                rt.exec("cmd /c start cmd.exe /K \"cd " + assetFile.getFile().getParentFile() + " && java " + assetFile.getFile().getName().replaceFirst("[.][^.]+$", "") + "\"");
             } catch (IOException e1) {
                 e1.printStackTrace();
             }
@@ -147,15 +147,15 @@ public class Run {
 
     /**
      * Run and Build .java File
-     * @param files: file
+     * @param assetFile: file
      */
-    public void runAndBuildJava(Files files){
-        if(files.getFile().getName().endsWith(".java")) {
+    public void runAndBuildJava(AssetFile assetFile){
+        if(assetFile.getFile().getName().endsWith(".java")) {
             try {
                 Runtime rt = Runtime.getRuntime();
                 build.buildJava();
                 Thread.sleep(10000);
-                runJava(files);
+                runJava(assetFile);
             } catch (InterruptedException e1) {
                 e1.printStackTrace();
             }
@@ -166,13 +166,13 @@ public class Run {
 
     /**
      * Run .py file
-     * @param files: file
+     * @param assetFile: file
      */
-    public void runPyhton(Files files){
-        if(files.getFile().getName().endsWith(".py")) {
+    public void runPyhton(AssetFile assetFile){
+        if(assetFile.getFile().getName().endsWith(".py")) {
             try {
                 Runtime rt =  Runtime.getRuntime();
-                rt.exec("cmd /c start " + files.getFile().getPath() + "\"");
+                rt.exec("cmd /c start " + assetFile.getFile().getPath() + "\"");
             } catch (IOException e1) {
                 e1.printStackTrace();
             }
@@ -183,13 +183,13 @@ public class Run {
 
     /**
      * Run HTML file
-     * @param files: file
+     * @param assetFile: file
      */
-    public void runHTML(Files files){
-        if(files.getFile().getName().endsWith(".html")) {
+    public void runHTML(AssetFile assetFile){
+        if(assetFile.getFile().getName().endsWith(".html")) {
             try {
                 Runtime rt =  Runtime.getRuntime();
-                rt.exec("cmd /c start " + files.getFile().getPath() + "\"");
+                rt.exec("cmd /c start " + assetFile.getFile().getPath() + "\"");
             } catch (IOException e1) {
                 e1.printStackTrace();
             }
@@ -200,13 +200,13 @@ public class Run {
 
     /**
      * Run .c file
-     * @param files: file
+     * @param assetFile: file
      */
-    public void runC(Files files){
-        if(files.getFile().getName().endsWith(".c")){
+    public void runC(AssetFile assetFile){
+        if(assetFile.getFile().getName().endsWith(".c")){
             try{
                 Runtime rt = Runtime.getRuntime();
-                rt.exec("cmd /c start cmd.exe /K \"start " + files.getFile().getPath() + ".exe" + "\"");
+                rt.exec("cmd /c start cmd.exe /K \"start " + assetFile.getFile().getPath() + ".exe" + "\"");
             }catch (IOException e){
                 e.printStackTrace();
             }
@@ -215,48 +215,48 @@ public class Run {
 
     /**
      * Run and Compile .c file
-     * @param files: file
+     * @param assetFile: file
      */
-    public void runAndBuildC(Files files){
-        if(files.getFile().getName().endsWith(".c")){
+    public void runAndBuildC(AssetFile assetFile){
+        if(assetFile.getFile().getName().endsWith(".c")){
             build.buildC();
-            runC(files);
+            runC(assetFile);
         }
     }
 
     /**
      * Run and Compile .cs file
-     * @param files: Files class
+     * @param assetFile: Files class
      */
-    public void runAndBuildCSharp(Files files){
-        if(files.getFile().getName().endsWith(".cs")){
+    public void runAndBuildCSharp(AssetFile assetFile){
+        if(assetFile.getFile().getName().endsWith(".cs")){
             build.buildCsharp();
         }
     }
 
-    public void runCpp(Files files){
-        if(files.getFile().getName().endsWith("cpp")){
+    public void runCpp(AssetFile assetFile){
+        if(assetFile.getFile().getName().endsWith("cpp")){
             try{
                 Runtime rt = Runtime.getRuntime();
-                rt.exec("cmd /c start cmd.exe /K \"start " + files.getFile().getPath() + ".exe" + "\"");
+                rt.exec("cmd /c start cmd.exe /K \"start " + assetFile.getFile().getPath() + ".exe" + "\"");
             }catch (IOException e){
                 e.printStackTrace();
             }
         }
     }
 
-    public void runAndBuildCpp(Files files){
-        if(files.getFile().getName().endsWith("cpp")){
+    public void runAndBuildCpp(AssetFile assetFile){
+        if(assetFile.getFile().getName().endsWith("cpp")){
             build.buildCpp();
-            runCpp(files);
+            runCpp(assetFile);
         }
     }
 
-    public void runJavaScript(Files files){
+    public void runJavaScript(AssetFile assetFile){
 
     }
 
-    public void runAndBuildJavaScript(Files files){
+    public void runAndBuildJavaScript(AssetFile assetFile){
 
     }
 }

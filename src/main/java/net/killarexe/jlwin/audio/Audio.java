@@ -3,8 +3,7 @@ package net.killarexe.jlwin.audio;
 import net.killarexe.jlwin.util.Logger;
 
 import javax.sound.sampled.*;
-import java.io.File;
-import java.io.IOException;
+import java.io.*;
 
 /**
  * Date: 05/09/2021
@@ -16,6 +15,7 @@ public class Audio {
     private File file;
     private AudioInputStream stream;
     private Clip clip;
+    private boolean isConverted;
     private Logger logger = new Logger(getClass());
 
     /**
@@ -35,10 +35,14 @@ public class Audio {
     public Audio(File file){
         logger.info("Setup Audio!");
         this.file = file;
+        if(file.getName().endsWith(".mp3") || file.getName().endsWith(".MP3")){
+            this.file = convert();
+        }
         setup();
     }
 
     private void setup(){
+
         try {
             stream = AudioSystem.getAudioInputStream(file);
             clip = AudioSystem.getClip();
@@ -49,6 +53,13 @@ public class Audio {
         } catch (LineUnavailableException e) {
             e.printStackTrace();
         }
+    }
+
+    public File convert(){
+        logger.warn("File Detected as MP3 Converting..");
+        isConverted = true;
+        logger.info("Convert Complete!");
+        return new File("C:\\Users\\hc\\Music\\mp3converted.wav");
     }
 
     /**
@@ -104,6 +115,10 @@ public class Audio {
         logger.info("Stop Audio!");
         clip.close();
         clip.stop();
+        if(isConverted){
+            file.delete();
+            isConverted = false;
+        }
     }
 
     public File getFile() {

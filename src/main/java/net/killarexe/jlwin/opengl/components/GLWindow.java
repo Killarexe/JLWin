@@ -1,5 +1,4 @@
-package net.killarexe.jlwin.opengl.component;
-
+package net.killarexe.jlwin.opengl.components;
 import net.killarexe.jlwin.util.Logger;
 import org.joml.Vector4f;
 import org.lwjgl.*;
@@ -17,7 +16,7 @@ import static org.lwjgl.opengl.GL11.*;
 import static org.lwjgl.system.MemoryStack.*;
 import static org.lwjgl.system.MemoryUtil.*;
 
-public class GLWindow extends GLComponent{
+public class GLWindow{
 
     private long window, icon;
     private String title;
@@ -146,23 +145,33 @@ public class GLWindow extends GLComponent{
 
         GL.createCapabilities();
 
+        for (GLComponent glComponent: glComponents) {
+            glComponent.start();
+        }
+
         glClearColor(color.x, color.y, color.z, color.w);
 
         while ( !glfwWindowShouldClose(this.window) ) {
-
-            glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); // clear the framebuffer
-
-            glfwSwapBuffers(this.window);
 
             for (GLComponent glComponent: glComponents) {
                 glComponent.update(dt);
             }
 
+            glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT); // clear the framebuffer
+
+            for (GLComponent glComponent: glComponents) {
+                glComponent.rendererUpdate(dt);
+            }
+
+            glfwSwapBuffers(this.window);
             glfwPollEvents();
 
             endTime = (float)glfwGetTime();
             dt = endTime - beginTime;
             beginTime = endTime;
+        }
+        for (GLComponent glComponent: glComponents) {
+            glComponent.end();
         }
     }
 
@@ -174,7 +183,7 @@ public class GLWindow extends GLComponent{
     }
 
     public void addComponents(GLComponent component){
-        if(component != this && !glComponents.contains(component)){
+        if(glComponents != this && !glComponents.contains(component)){
             glComponents.add(component);
         }
     }

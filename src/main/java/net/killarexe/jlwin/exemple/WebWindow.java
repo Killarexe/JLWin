@@ -1,4 +1,4 @@
-package net.killarexe.jlwin.window;
+package net.killarexe.jlwin.exemple;
 
 import net.killarexe.jlwin.javax.component.*;
 import net.killarexe.jlwin.javax.enums.ScrollBar;
@@ -24,15 +24,16 @@ public class WebWindow implements ActionListener, HyperlinkListener {
         JXWindow.getWindow().setResizable(true);
         JXPanel = new JXPanel(width, height);
         pane = new JXEditorPane(width, height-60, false);
-        field = new JXTextField(width, 50, true);
+        field = new JXTextField(1000, 50, true);
         JXButton = new JXButton("Go!", 100, 20);
+        JXButton.getButton().setBounds(0, 700, 100, 20);
         JXScrollPane = new JXScrollPane(width, height-100, pane.getPane(), ScrollBar.BOTH);
         JXButton.addListener(this);
         field.addListener(this);
         pane.addHyperlinkListener(this);
         JXPanel.getPanel().add(JXScrollPane.getScrollPane(), BorderLayout.CENTER);
-        JXPanel.getPanel().add(field.getTextField(), BorderLayout.NORTH);
         JXPanel.getPanel().add(JXButton.getButton(), BorderLayout.EAST);
+        JXPanel.getPanel().add(field.getTextField(), BorderLayout.NORTH);
         JXWindow.addComponent(JXPanel.getPanel());
         pane.setURL(defaultURL);
     }

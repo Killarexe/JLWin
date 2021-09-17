@@ -17,10 +17,13 @@ import java.io.IOException;
  */
 public class Image {
 
+    private int width, height, x, y;
     private java.awt.Image image;
     private BufferedImage bufferedImage;
+    private JFrame frame;
     private ImageIcon icon;
-    
+    private Graphics g;
+
     public Image(String path){
         icon = new ImageIcon(path);
         try {
@@ -31,9 +34,21 @@ public class Image {
         image = icon.getImage();
     }
 
-    public void drawImage(JFrame frame, int x, int y, int width, int height){
-        Graphics g = frame.getGraphics();
+    public void setWindow(JFrame frame){
+        this.frame = frame;
+        g = frame.getGraphics();
+    }
+
+    public void drawImage(int x, int y, int width, int height){
         g.drawImage(bufferedImage, x, y, width, height,null, null);
+        this.width = width;
+        this.height = height;
+        this.x = x;
+        this.y = y;
+    }
+
+    public void moveImage(int addX, int addY){
+        drawImage(addX, addY, width, height);
     }
 
     public java.awt.Image getImage() {

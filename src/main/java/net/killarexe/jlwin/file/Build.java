@@ -11,21 +11,21 @@ import java.io.IOException;
  */
 public class Build {
 
-    Files files;
+    AssetFile assetFile;
     Logger logger = new Logger(getClass());
 
     /**
      * Compile files
-     * @param files: Files class
+     * @param assetFile: Files class
      */
-    public Build(Files files){
-        this.files = files;
+    public Build(AssetFile assetFile){
+        this.assetFile = assetFile;
     }
 
     public void buildC(){
         try{
             Runtime rt = Runtime.getRuntime();
-            rt.exec("cmd /c start cmd.exe /K \"gcc " + files.getFile().getPath() + " " + files.getFile().getName() + "\"");
+            rt.exec("cmd /c start cmd.exe /K \"gcc " + assetFile.getFile().getPath() + " " + assetFile.getFile().getName() + "\"");
         }catch (IOException e){
             e.printStackTrace();
         }
@@ -37,7 +37,7 @@ public class Build {
     public void buildCpp(){
         try{
             Runtime rt = Runtime.getRuntime();
-            rt.exec("cmd /c start cmd.exe /K \"g++ " + files.getFile().getPath() + " " + files.getFile().getName() + "\"");
+            rt.exec("cmd /c start cmd.exe /K \"g++ " + assetFile.getFile().getPath() + " " + assetFile.getFile().getName() + "\"");
         }catch (IOException e){
             e.printStackTrace();
         }
@@ -46,7 +46,7 @@ public class Build {
     public void buildCsharp(){
         try{
             Runtime rt = Runtime.getRuntime();
-            rt.exec("cmd /c start cmd.exe /K \"csc " + files.getFile().getPath() + "\"");
+            rt.exec("cmd /c start cmd.exe /K \"csc " + assetFile.getFile().getPath() + "\"");
         }catch (IOException e){
             e.printStackTrace();
         }
@@ -58,7 +58,7 @@ public class Build {
     public void buildJava() {
         try{
             Runtime rt = Runtime.getRuntime();
-            rt.exec("cmd /c start cmd.exe /K \"javac " + files.getFile().getPath() + " && exit" +"\"");
+            rt.exec("cmd /c start cmd.exe /K \"javac " + assetFile.getFile().getPath() + " && exit" +"\"");
         }catch (IOException e){
             e.printStackTrace();
         }

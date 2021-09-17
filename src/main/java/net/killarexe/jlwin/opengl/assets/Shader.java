@@ -1,4 +1,4 @@
-package net.killarexe.jlwin.opengl;
+package net.killarexe.jlwin.opengl.assets;
 
 import net.killarexe.jlwin.util.Logger;
 import org.joml.*;
@@ -6,9 +6,12 @@ import org.lwjgl.BufferUtils;
 
 import java.io.IOException;
 import java.nio.FloatBuffer;
-import java.nio.file.*;
+import java.nio.file.Files;
+import java.nio.file.Path;
 
+import static org.lwjgl.opengl.GL11.GL_FALSE;
 import static org.lwjgl.opengl.GL20.*;
+import static org.lwjgl.opengl.GL20.glGetShaderInfoLog;
 
 public class Shader {
 

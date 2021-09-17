@@ -1,4 +1,4 @@
-package net.killarexe.jlwin.window;
+package net.killarexe.jlwin.exemple;
 
 import net.killarexe.jlwin.javax.component.JXTextPane;
 import net.killarexe.jlwin.javax.component.JXWindow;
