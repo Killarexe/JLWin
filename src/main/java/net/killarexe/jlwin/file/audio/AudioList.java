@@ -1,4 +1,4 @@
-package net.killarexe.jlwin.audio;
+package net.killarexe.jlwin.file.audio;
 
 import java.util.ArrayList;
 import java.util.List;

@@ -4,7 +4,8 @@ import net.killarexe.jlwin.javax.component.JXTextPane;
 import net.killarexe.jlwin.javax.component.JXWindow;
 import net.killarexe.jlwin.javax.component.JXScrollPane;
 import net.killarexe.jlwin.javax.enums.ScrollBar;
-import net.killarexe.jlwin.util.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import javax.swing.*;
 
@@ -13,7 +14,7 @@ public class ConsoleWindow {
     private final JXWindow JXWindow;
     private final JXTextPane JXTextPane;
     private final JXScrollPane pane;
-    private final Logger logger = new Logger(getClass());
+    private final Logger logger = LogManager.getLogger();
 
     public ConsoleWindow(String name, int width, int height){
         logger.info("Creating ConsoleWindow");

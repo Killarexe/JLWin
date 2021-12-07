@@ -1,4 +1,4 @@
-package net.killarexe.jlwin.audio;
+package net.killarexe.jlwin.file.audio;
 
 import net.killarexe.jlwin.exception.ConversionException;
 

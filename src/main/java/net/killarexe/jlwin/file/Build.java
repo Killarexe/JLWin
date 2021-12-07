@@ -1,7 +1,9 @@
 package net.killarexe.jlwin.file;
 
-import net.killarexe.jlwin.util.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
+import javax.swing.*;
 import java.io.IOException;
 
 /**
@@ -11,8 +13,8 @@ import java.io.IOException;
  */
 public class Build {
 
-    AssetFile assetFile;
-    Logger logger = new Logger(getClass());
+    private AssetFile assetFile;
+    private Logger logger = LogManager.getLogger();;
 
     /**
      * Compile files
@@ -20,6 +22,20 @@ public class Build {
      */
     public Build(AssetFile assetFile){
         this.assetFile = assetFile;
+    }
+
+    public void checkAndBuild(){
+        if(assetFile.getFile().getName().endsWith(".java")) {
+            buildJava();
+        }else if(assetFile.getFile().getName().endsWith(".c")){
+            buildC();
+        }else if(assetFile.getFile().getName().endsWith(".cs")){
+            buildCsharp();
+        }else if(assetFile.getFile().getName().endsWith(".cpp")){
+            buildCpp();
+        }else{
+            JOptionPane.showMessageDialog(null, "No File Selected! Or Can't Build The File!");
+        }
     }
 
     public void buildC(){

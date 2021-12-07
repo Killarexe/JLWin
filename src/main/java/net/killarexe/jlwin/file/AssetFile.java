@@ -1,9 +1,11 @@
 package net.killarexe.jlwin.file;
 
+import net.killarexe.jlwin.console.Console;
 import net.killarexe.jlwin.javax.component.JXTextArea;
 import net.killarexe.jlwin.javax.component.JXTextField;
 import net.killarexe.jlwin.javax.component.JXTextPane;
-import net.killarexe.jlwin.util.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import javax.swing.*;
 import java.io.*;
@@ -13,6 +15,7 @@ import java.nio.channels.Channels;
 import java.nio.channels.ReadableByteChannel;
 import java.nio.file.Files;
 import java.nio.file.Path;
+import java.nio.file.Paths;
 import java.util.Formatter;
 import java.util.Scanner;
 
@@ -24,7 +27,9 @@ import java.util.Scanner;
 public class AssetFile {
 
     private File file;
-    private final Logger logger = new Logger(getClass());
+    private final Logger logger = LogManager.getLogger();;
+
+    public AssetFile(){}
 
     public AssetFile(File file){
         this.file = file;
@@ -651,6 +656,21 @@ public class AssetFile {
         }else{
             file.renameTo(new java.io.File(newName));
             logger.info("File renamed to: '" + newName + "'");
+        }
+    }
+
+    public String fileToString(){
+        try {
+             return Files.readString(Paths.get(file.getAbsolutePath()));
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        return null;
+    }
+
+    public void run(){
+        if(file.canExecute()) {
+            Console.execute("start " + fileToString());
         }
     }
 

@@ -6,6 +6,7 @@ plugins {
 sourceSets {
 
 }
+
 task sources(type: Copy) {
     from 'src/main/java'
     into "$buildDir/sources"
@@ -45,16 +46,26 @@ javadoc {
     source = sources.destinationDir
 }
 
-project.ext.lwjglVersion = "3.2.3"
-project.ext.jomlVersion = "1.10.1"
+project.ext.lwjglVersion = "3.3.0"
+project.ext.jomlVersion = "1.10.2"
 project.ext.lwjglNatives = "natives-windows"
 
 repositories {
     jcenter()
     mavenCentral()
+    maven { url 'https://jitpack.io' }
+}
+
+dependencyManagement {
+    imports {
+        mavenBom 'org.apache.logging.log4j:log4j-bom:2.14.1'
+    }
 }
 
 dependencies {
+
+    //Jave Lib
+    implementation group: 'ws.schild', name: 'jave-all-deps', version: '3.2.0'
 
     //Discord RPC
     implementation 'club.minnced:java-discord-rpc:2.0.1'
@@ -79,6 +90,17 @@ dependencies {
     runtimeOnly "org.lwjgl:lwjgl-opengl::$lwjglNatives"
     runtimeOnly "org.lwjgl:lwjgl-stb::$lwjglNatives"
     implementation "org.joml:joml:${jomlVersion}"
+
+    //Slick Utils
+    implementation fileTree(dir: 'libs', include: '*.jar')
+
+    //Youtube Downloader Lib
+    implementation 'com.github.sealedtx:java-youtube-downloader:3.0.2'
+
+    //Log4j
+    implementation('org.apache.logging.log4j:log4j-core:2.14.1')
+    implementation('org.apache.logging.log4j:log4j-slf4j-impl:2.14.1')
+    implementation('org.apache.logging.log4j:log4j-1.2-api:2.14.1')
 }
 
 task sourcesJar(type: Jar, dependsOn: classes) {

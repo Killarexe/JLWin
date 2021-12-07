@@ -1,7 +1,8 @@
 package net.killarexe.jlwin.util.discord;
 
 import club.minnced.discord.rpc.*;
-import net.killarexe.jlwin.util.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 public class DiscordController {
 
@@ -18,7 +19,7 @@ public class DiscordController {
     private final String applicationId;
     private final String steamId;
 
-    private final Logger logger = new Logger(getClass());
+    private final Logger logger = LogManager.getLogger();
 
     /**
      * Init DiscordController and setup the RPC

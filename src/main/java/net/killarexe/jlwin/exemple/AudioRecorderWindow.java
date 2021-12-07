@@ -1,19 +1,17 @@
 package net.killarexe.jlwin.exemple;
 
-import net.killarexe.jlwin.audio.AudioRecorder;
+import net.killarexe.jlwin.file.audio.AudioRecorder;
 import net.killarexe.jlwin.javax.component.JXButton;
 import net.killarexe.jlwin.javax.component.JXFileChooser;
 import net.killarexe.jlwin.javax.component.JXMenu;
 import net.killarexe.jlwin.javax.component.JXWindow;
-import net.killarexe.jlwin.util.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import javax.sound.sampled.AudioFileFormat;
 import javax.swing.*;
-import javax.swing.filechooser.FileNameExtensionFilter;
-import java.awt.*;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.io.File;
 
 public class AudioRecorderWindow implements ActionListener {
 
@@ -24,7 +22,7 @@ public class AudioRecorderWindow implements ActionListener {
     private long recordTime;
     private AudioFileFormat.Type type;
     private String path;
-    private Logger logger = new Logger(getClass());
+    private Logger logger = LogManager.getLogger();
 
     public AudioRecorderWindow(String title, int width, int height){
         setup(title, width, height);

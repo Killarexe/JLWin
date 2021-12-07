@@ -1,6 +1,7 @@
 package net.killarexe.jlwin.opengl.assets;
 
-import net.killarexe.jlwin.util.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.io.File;
 import java.util.HashMap;
@@ -10,7 +11,7 @@ public class AssetPool {
 
     private static Map<String, Shader> shaders = new HashMap<>();
 
-    private static Logger logger = new Logger(AssetPool.class);
+    private static Logger logger = LogManager.getLogger();
 
     public static Shader getShader(String resourceName){
         File file = new File(resourceName);

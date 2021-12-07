@@ -27,10 +27,8 @@ public class Run {
     /**
      * Check and Run selected file
      * @param assetFile: File
-     * @param area: TextArea
      */
-    public void checkAndRun(AssetFile assetFile, JXTextArea area){
-        assetFile.save(area);
+    public void checkAndRun(AssetFile assetFile){
         if(assetFile.getFile().getName().endsWith(".java")) {
             runJava(assetFile);
         }else if(assetFile.getFile().getName().endsWith(".py")){

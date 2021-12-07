@@ -3,7 +3,8 @@ package net.killarexe.jlwin.file.config;
 import com.google.gson.Gson;
 import net.killarexe.jlwin.file.enums.ConfigType;
 import net.killarexe.jlwin.file.enums.ConfigValue;
-import net.killarexe.jlwin.util.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import java.io.*;
 import java.util.ArrayList;
@@ -13,7 +14,7 @@ import java.util.Properties;
 public class Config {
 
 	private Properties properties;
-	private Logger logger = new Logger(getClass());
+	private Logger logger = LogManager.getLogger();
 
 	public Config(String path, ConfigType type){
 		logger.info("Creating file: " + this.properties);

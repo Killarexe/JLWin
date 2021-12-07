@@ -1,6 +1,7 @@
 package net.killarexe.jlwin.javax.component;
 
 import javax.swing.*;
+import java.applet.Applet;
 import java.awt.*;
 
 /**
@@ -8,7 +9,7 @@ import java.awt.*;
  * @author Killar.exe
  * @version 0.1a
  */
-public class JXWindow extends JXComponent {
+public class JXWindow extends JXComponent{
     
     private final JFrame window;
 

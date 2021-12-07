@@ -1,6 +1,7 @@
-package net.killarexe.jlwin.audio;
+package net.killarexe.jlwin.file.audio;
 
-import net.killarexe.jlwin.util.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import javax.sound.sampled.*;
 import java.io.*;
@@ -16,7 +17,7 @@ public class Audio {
     private AudioInputStream stream;
     private Clip clip;
     private boolean isConverted;
-    private Logger logger = new Logger(getClass());
+    private Logger logger = LogManager.getLogger();
 
     /**
      * Setup Audio (ONLY .WAW FILES!)

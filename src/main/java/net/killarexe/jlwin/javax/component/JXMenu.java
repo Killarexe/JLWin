@@ -158,6 +158,13 @@ public class JXMenu extends JXComponent {
         item.addActionListener(listener);
     }
 
+    public void addAllListener(ActionListener listener){
+        logger.debug("Adding Action Listener for all MenuItem'");
+        for (JMenuItem item: menuItems) {
+            item.addActionListener(listener);
+        }
+    }
+
     /**
      * Add an Listener
      * @param item: Triggered JCheckBoxMenuItem

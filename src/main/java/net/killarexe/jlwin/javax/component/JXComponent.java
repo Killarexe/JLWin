@@ -1,6 +1,8 @@
 package net.killarexe.jlwin.javax.component;
 
-import net.killarexe.jlwin.util.Logger;
+
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import javax.swing.event.AncestorListener;
 import java.awt.*;
@@ -9,7 +11,7 @@ import java.awt.event.TextListener;
 
 public abstract class JXComponent {
 
-    protected Logger logger = new Logger(getClass());
+    protected Logger logger = LogManager.getLogger();
 
     public void setText(String name){
 

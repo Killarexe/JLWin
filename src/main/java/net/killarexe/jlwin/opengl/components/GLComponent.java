@@ -1,14 +1,16 @@
 package net.killarexe.jlwin.opengl.components;
 
-import net.killarexe.jlwin.util.Logger;
+import net.killarexe.jlwin.opengl.renderer.Renderer;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 public abstract class GLComponent {
 
-    protected Logger logger = new Logger(getClass());
+    protected Logger logger = LogManager.getLogger();
 
-    public void start(){}
-    public void rendererUpdate(float dt){}
-    public void update(float dt){}
+    public void start(Renderer renderer){}
+    public void rendererUpdate(Renderer renderer){}
+    public void update(){}
     public void end(){}
 
 }

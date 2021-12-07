@@ -1,6 +1,7 @@
 package net.killarexe.jlwin.file;
 
-import net.killarexe.jlwin.util.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import javax.swing.*;
 import javax.swing.filechooser.FileNameExtensionFilter;
@@ -12,7 +13,7 @@ import javax.swing.filechooser.FileNameExtensionFilter;
  */
 public class FileExtenstion {
 
-    private static final Logger logger = new Logger(FileExtenstion.class);
+    private static final Logger logger = LogManager.getLogger();;
     private static final FileNameExtensionFilter cobolFilter = new FileNameExtensionFilter("Cobal files", "cbl", "cob", "cpy");
     private static final FileNameExtensionFilter cssFilter = new FileNameExtensionFilter("Cascading Style Sheets files(CSS)", "css");
     private static final FileNameExtensionFilter marvenFilter = new FileNameExtensionFilter("Maven files", "porm");

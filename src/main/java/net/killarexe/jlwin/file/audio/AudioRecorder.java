@@ -1,7 +1,8 @@
-package net.killarexe.jlwin.audio;
+package net.killarexe.jlwin.file.audio;
 
 import net.killarexe.jlwin.file.AssetFile;
-import net.killarexe.jlwin.util.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 
 import javax.sound.sampled.*;
 import java.io.IOException;
@@ -12,7 +13,7 @@ public class AudioRecorder {
     private AssetFile file;
     private AudioFileFormat.Type fileType;
     private TargetDataLine line;
-    private Logger logger = new Logger(getClass());
+    private Logger logger = LogManager.getLogger();
 
     public void start(long recordTime, String path, AudioFileFormat.Type type){
         this.recordTime = recordTime;

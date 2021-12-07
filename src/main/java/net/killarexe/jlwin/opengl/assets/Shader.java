@@ -1,6 +1,7 @@
 package net.killarexe.jlwin.opengl.assets;
 
-import net.killarexe.jlwin.util.Logger;
+import org.apache.logging.log4j.LogManager;
+import org.apache.logging.log4j.Logger;
 import org.joml.*;
 import org.lwjgl.BufferUtils;
 
@@ -22,7 +23,7 @@ public class Shader {
     private String fragementSource;
     private String filePath;
 
-    Logger logger = new Logger(getClass());
+    private Logger logger = LogManager.getLogger();
 
     public Shader(String filePath) {
         this.filePath = filePath;
@@ -43,7 +44,7 @@ public class Shader {
 
             if (firstPattern.equals("vertex")) {
                 vertexSource = splitString[1];
-            } else if (firstPattern.equals("fragment")) {
+            } else if (firstPattern.equals("fragement")) {
                 fragementSource = splitString[1];
             } else {
                 logger.error("Unexpected Token '" + firstPattern + "' in '" + filePath + "'");
@@ -52,7 +53,7 @@ public class Shader {
 
             if (secondPattern.equals("vertex")) {
                 vertexSource = splitString[2];
-            } else if (secondPattern.equals("fragment")) {
+            } else if (secondPattern.equals("fragement")) {
                 fragementSource = splitString[2];
             } else {
                 logger.fatal("Unexpected Token '" + secondPattern + "' in '" + filePath + "'");

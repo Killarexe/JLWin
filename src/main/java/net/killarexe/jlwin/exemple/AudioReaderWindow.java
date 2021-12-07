@@ -1,6 +1,6 @@
 package net.killarexe.jlwin.exemple;
 
-import net.killarexe.jlwin.audio.Audio;
+import net.killarexe.jlwin.file.audio.Audio;
 import net.killarexe.jlwin.javax.component.JXFileChooser;
 import net.killarexe.jlwin.javax.component.JXMenu;
 import net.killarexe.jlwin.javax.component.JXWindow;
@@ -22,19 +22,27 @@ public class AudioReaderWindow implements ActionListener {
         menu.createMenuItem("Open", 0);
         menu.createMenuItem("Close", 0);
         menu.createMenuItem("Exit", 0);
-        window.addBar(menu);
         for (int i = 0; i < 3; i++) {
             menu.addListener(menu.getMenuItem(i), this);
         }
+        window.addBar(menu);
     }
 
     @Override
     public void actionPerformed(ActionEvent e) {
         if(e.getSource() == menu.getMenuItem(0)){
-            audio = new Audio(JXFileChooser.choose(new FileNameExtensionFilter("audio files", "wav")));
-            audio.startLoop();
+            if(audio == null) {
+                audio = new Audio(JXFileChooser.choose(new FileNameExtensionFilter("audio files", "wav")));
+                audio.startLoop();
+            }else{
+                audio.startLoop();
+                audio = null;
+                audio = new Audio(JXFileChooser.choose(new FileNameExtensionFilter("audio files", "wav")));
+                audio.startLoop();
+            }
         }else if (e.getSource() == menu.getMenuItem(1)){
             audio.stop();
+            audio = null;
         }else if(e.getSource() == menu.getMenuItem(2)){
             System.exit(0);
         }
